@@ -140,9 +140,9 @@ No phased activity was recorded.`}function qq(e){const t=e.session?.target;retur
 
 No findings were derived from the run.`;const t=["| # | Finding | Severity | Weakness |","| --- | --- | --- | --- |",...e.map((r,i)=>`| ${i+1} | ${r.title} | \`${cp(r.severity)}\` | ${[r.cve,r.cwe].filter(Boolean).join(" · ")||"—"} |`)].join(`
 `),n=e.map((r,i)=>{const a=[r.cve,r.cwe].filter(Boolean).join(" · ")||"—",l=r.references.length?r.references.map(u=>`  - ${u}`).join(`
-`):"  - —";return[`### ${i+1}. ${r.title}`,"",`**Severity**: \`${cp(r.severity)}\`  `,`**Weakness**: ${a}  `,`**Affected**: ${r.affected}`,"",`**Description**: ${r.description}`,"",`**Impact**: ${r.impact}`,"","**Evidence**",r.evidence.map(u=>`- \`#${u.seq}\` \`${u.cmd}\`
+`):"  - —";return[`### ${i+1}. ${r.title}`,"",`**Severity**: \`${cp(r.severity)}\` · **Weakness**: ${a} · **Affected**: ${r.affected}`,"","#### Description","",r.description,"","#### Impact","",r.impact,"","#### Evidence","",r.evidence.map(u=>`- \`#${u.seq}\` \`${u.cmd}\`
 ${dv([u.output||"(no captured output)"])}`).join(`
-`),"","**Steps to reproduce**",dv(r.reproduction.length?r.reproduction:["(see the walkthrough)"]),"",`**Remediation**: ${r.remediation}`,"","**References**",l].join(`
+`),"","#### Steps to reproduce","",dv(r.reproduction.length?r.reproduction:["(see the walkthrough)"]),"","#### Remediation","",r.remediation,"","#### References","",l].join(`
 `)});return`## Findings
 
 `+t+`
